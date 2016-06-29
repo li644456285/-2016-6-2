@@ -2,73 +2,455 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
 	<title>Document</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<style type="text/css">
+	#cover{width: 1920px;height: 1300px;position: absolute;left: 0;top: 0;display: none;}
+	#box{width: 732px;height: 509px;background: #1c2125;margin: 273px auto 0;text-align: center;position: relative;}
+	#box img{position: absolute;right: 10px;top: 20px;cursor: pointer;}
+	#box div{font-size: 30px;color: #00cab9;padding: 36px 0 16px;}
+	#wrap{width: 1920px;height: 1300px;}
+	#top{overflow: hidden;padding-left: 425px;padding-top: 19px;padding-bottom: 13px;}
+	#top img{float: left;margin-right: 525px;}
+	#top a{float: left;color: #333333;text-decoration: none;font-size: 12px;vertical-align: top;margin-right: 25px;}
+	#top a:hover{color: #b72124;}
+	#lastA{background: url(img/menu0.jpg) 89px -1px no-repeat;width: 100px;}
+	#lastA:hover{background-image: url(img/menu1.jpg);}
+	#con{overflow: hidden;}
+	#left{width: 180px;height: 1005px;background: url(img/bg.jpg);float: left;}
+	.btn{width: 75px;height: 76px;margin: auto;margin-bottom:10px;background-position:center center;background-repeat: no-repeat;}
+	#code{width: 94px;margin: auto;overflow:hidden;margin-top: 35px;}
+	#code div{float: left;text-align: center;width: 47px;padding:5px 0;background: #262626;}
+	#right{float: right;width: 1740px;height: 1005px;position: relative;background:url(img/0b.jpg) -182px -55px;}
+	#centre,#skill,#app,#pre,#video,#new,#medio,#switch{position: absolute;}
+	#centre{width: 343px;overflow: hidden;display: none;}
+	.centre1{left: 334px;top: 495px;}
+	.centre2{left: 151px;top: 370px;}
+	.centre3{left: 236px;top: 445px;}
+	.centre4{left: 338px;top: 350px;}
+	#lineone{overflow: hidden;margin: auto;width: 260px;}
+	#lineone div{cursor: pointer;}
+	#back{width: 12px;height: 70px;margin-top:60px;background: url(img/left0.png) center center no-repeat;float: left;padding-right:36px;}
+	#foward{width: 12px;height: 70px;margin-top:60px;background: url(img/right0.png) center center no-repeat;float: left;padding-left: 36px;}
+	#play{width: 161px;height: 159px;background: url(img/play1.png) center center no-repeat;float: left;}
+	#text{overflow: hidden;width: 1372px;position: relative;}
+	.text{width: 343px;float: left;text-align: center;font-family: '微软雅黑';font-weight: bold;color: #1c2125;}
+	.text .s1{font-size: 35px;line-height: 30px;}
+	.text .s2{font-size: 16px;line-height: 48px;}
+	#pre2{width: 306px;height: 90px;background: url(img/prepre0.png) no-repeat;margin: auto;cursor: pointer;}
+	#skill{left: 586px;top: 485px;display: none;}
+	#skill div{width: 45px;height: 45px;border-radius: 50%;position: absolute;cursor: pointer;}
+	#two{left: 77px;top: 24px;}
+	#three{left: 128px;top: -10px;}
+	#skig1{left: -36px;top: -47px;position: absolute;display: none;}
+	#skig2{left: 35px;top: 40px;position: absolute;}
+	#skig3{left: 124px;top: -85px;position: absolute;}
+	#skill img{display: none;}
+	#app{padding-left: 64px;padding-top: 36px;overflow: hidden;}
+	#app div{width: 80px;height: 75px;float: left;cursor: pointer;}
+	#pre{left: 72px;top: 373px;width: 306px;height: 90px;background: url(img/pre0.png);}
+	#video{width: 304px;height: 171px;background: url(img/video0.png);left: 73px;top: 506px;text-align: center;}
+	#video img{margin-top: 51px;cursor: pointer;}
+	#new{right: 0;top: 514px;cursor: pointer;}
+	#newblock{position: absolute;width: 316px;height: 243px;background: #212427;top: -244px;right: -316px;cursor: default;}
+	#newinner{padding:21px 23px 0;}
+	#newtop{background: url('img/newpic.png') no-repeat;height: 81px;padding-left: 100px;color: #555555;line-height: 22px;border-bottom: 1px dotted #555555;}
+	#newblock ul{color: #555555;padding-top: 13px;}
+	#newblock ul li{margin-bottom: 10px;background: url(img/dotbg.png) left center no-repeat;padding-left: 10px;height: 16px;cursor: pointer;}
+	#newblock ul li .s1{float: left;}
+	#newblock ul li .s2{float: right;}
+	#newblock ul li:hover{color: #36A195;}
+	#newblock #newbottom{height: 50px;border-top-left-radius: 21px;background: url(img/text.png) 12px center no-repeat;background-color: #131619;}
+	#medio{right: 0;top:564px;cursor: pointer;}
+	#medioblock{width: 444px;height: 51px;position: absolute;top: 0;right: -444px;background: url(img/mediobg.png) 15px center no-repeat;background-color:#00ffe9;border-radius:25px 0 0 25px;cursor: default;}
+	#medioinner{padding-left: 93px;padding-top: 15px;}
+	#medioinner div{float: left;line-height: 23px;position: relative;}
+	#medioinner .code{height: 116px;position: absolute;right:-6px;top: -116px;background: url(img/downtrangle.png) bottom center no-repeat;display: none;}
+	#medioinner .code img{border: 8px solid #1c2125;}
+	#medioinner img{vertical-align: middle;}
+	#medioinner span{vertical-align: middle;padding-left: 6px;padding-right: 6px;}
+	#switch{right: 0;top: 638px;width: 105px;height: 50px;background: url(img/switch0.png);}
+	#switch div{width: 52px;height: 50px;float: left;}
+	#switch .left{border-radius: 50% 0 0 50%;}
+	#switch .right{border-radius: 0 50% 50% 0;}
+	#footer{background: #191c1d;}
+	#footerinner{width: 720px;margin: auto;padding: 58px 0 50px 0;}
+	#footerup{padding-left: 214px;border-bottom: 2px solid #272727;padding-bottom: 25px;}
+	#footerup span{padding-right: 20px;padding-left: 20px;border-right: 2px dotted #272727;display: inline-block;}
+	#footerdown{padding-top: 31px;}
+	#footerdown div{float: right;width: 471px;color: #525253;}
+	#footerdown a{text-decoration: none;font-size: 12px;color: #525253;margin:0 6px 0;line-height: 20px;}
+	#footerdown span{color: #3a3b3b;line-height: 20px;margin-left: 6px;}
+	</style>
 </head>
 <body>
-	<div class="wrap">
-		<div class="content">
-			<div class="top">
-				<div>
-					<img class="img1" src="image/logo.png" alt="">
-					<img class="img2" src="image/guangdong.png" alt="">
+	<div id="wrap">
+		<div id="top">
+			<img src="img/logo.jpg" alt="">
+			<a href="###">注册帐号</a>
+			<a href="###">购卡充值</a>
+			<a href="###">手机将军令</a>
+			<a href="###" id="lastA">网易游戏全目录</a>
+		</div>
+		<div id="con">
+			<div id="left">
+				<img src="img/logopic.png" alt="">
+				<div class="btn"></div>
+				<div class="btn"></div>
+				<div class="btn"></div>
+				<div class="btn"></div>
+				<div class="btn"></div>
+				<div id="code">
+					<div id="refresh"><img src="img/refresh.png" alt=""></div>
+					<div id="wechat"><img src="img/wechat.png" alt=""></div>
+					<img src="img/code.png" alt="">
 				</div>
 			</div>
-			<div class="middle clear">
-				<ul class="ul1 fl">
-					<li class="li1 animated"><img class="rotatex" src="image/1.png" alt=""></li>
-					<li class="li2 "><img class="rotatex" src="image/5.png" alt=""></li>
-					<li class="li3 "><img class="pulse" src="image/9.png" alt=""></li>
-				</ul>
-				<ul class="ul2 fl">
-					<li class="li1"><img src="image/2.png" alt=""></li>
-					<li class="li2"><img src="image/6.png" alt=""></li>
-					<li class="li3"><img src="image/10.png" alt=""></li>
-				</ul>
-				<ul class="ul3 fl">
-					<li class="li1"><img src="image/3.png" alt=""></li>
-					<li class="li2"><img src="image/7.png" alt=""></li>
-					<li class="li3"><img src="image/11.png" alt=""></li>
-				</ul>
-				<ul class="ul4 fl">
-					<li class="li1"><img src="image/4.png" alt=""></li>
-					<li class="li2"><img src="image/8.png" alt=""></li>
-					<li class="li3"><img src="image/12.png" alt=""></li>
-				</ul>
-			</div>
-			<div class="footer">
-				<div>
-					<img src="image/text.png" alt="">
+			<div id="right">
+				<div id="app">
+					<div id="apple"></div>
+					<div id="android"></div>
 				</div>
-			</div>
-		<div class="content2">
-			<div class="topright">
-				<div class="d1 clear">
-					<span>32°</span>
-					<img class="fr" src="image/sun.png" alt="">
+				<div id="pre"></div>
+				<div id="video"><img src="img/playblg.png" alt="" class="play"></div>
+				<div id="centre">
+					<div id="lineone">
+						<div id="back"></div>
+						<div id="play" class="play"></div> 
+						<div id="foward"></div>
+					</div>
+					
+					<div id="text">
+						<div id="text1" class="text">
+							<span class="s1">强敌怪诞入侵</span><br>
+							<span class="s2">炫萌恶魔，诡秘招式，海陆空三重势力席卷 </span>
+						</div>
+						<div id="text2" class="text">
+							<span class="s1">萌宠养成系统</span><br>
+							<span class="s2">告别单局殴怪，持续畅爽攻防</span>
+						</div>
+						<div id="text3" class="text">
+							<span class="s1">排兵布阵</span><br>
+							<span class="s2">酷爽打击乐趣</span>
+						</div>
+						<div id="text4" class="text">
+							<span class="s1">攻防社交</span><br>
+							<span class="s2">社交互动、组队推图，打破单机攻防模式</span>
+						</div>
+					</div>
+					<div id="pre2"></div>
 				</div>
-				<div class="d2 clear">
-					<span class="s1">WIND DIRECTION</span>
-					<span class="s2 fr">DATE</span>
+				<div id="skill">
+					<div id="one"></div>
+					<div id="two"></div>
+					<div id="three"></div>
+					<img src="img/skill1.png" alt="" id="skig1">
+					<img src="img/skill2.png" alt="" id="skig2">
+					<img src="img/skill3.png" alt="" id="skig3">
 				</div>
-				<div class="d3 clear">
-					<span class="s1">4~5级</span>
-					<span class="s2 fr">2015/01/27</span>
+				<div id="new">
+					<img src="img/new.png" alt="">
+					<div id="newblock">
+						<div id="newinner">
+							<div id="newtop">最新消息致玩家书越狱删档封测 6月25日更新息致玩家书越狱维护 25日更25日更公告。</div>
+							<ul>
+								<li><span class="s1">最新消息致玩家书</span><span class="s2">14/6/6</span></li>
+								<li><span class="s1"> IOS越狱删档封测结束公告</span><span class="s2">14/6/6</span></li>
+								<li><span class="s1"> 6月25更新维护公告</span><span class="s2">14/6/6</span></li>
+							</ul>
+						</div>
+						<div id="newbottom"></div>
+					</div>
 				</div>
-				<div class="d4">
-					<span class="s1">MON</span>
-					<span class="s2">TUE</span>
-					<span class="s3">WED</span>
-					<span class="s4">THU</span>
-					<span class="s5">FRI</span>
-					<span class="s6">SAT</span>
-					<span class="s7">SUN</span>
+				<div id="medio">
+					<img src="img/medio.png" alt="">
+					<div id="medioblock">
+						<div id="medioinner">
+							<div>
+								<img src="img/yixin.png" alt=""><span>易信</span>
+								<div class="code"><img src="img/code1.png" alt=""></div>
+							</div>
+							<div><img src="img/weixin.png" alt=""><span>微信</span></div>
+							<div><img src="img/weibo.png" alt=""><span>新浪微博</span></div>
+							<div><img src="img/weibo2.png" alt=""><span>腾讯微博</span></div>
+							<div><img src="img/zhangbai.png" alt=""><span>贴吧</span></div>
+						</div>
+
+					</div>
 				</div>
+				<div id="switch"><div class="left"></div><div class="right"></div></div>
+				
 			</div>
 		</div>
+		<div id="footer">
+			<div id="footerinner">
+				<div id="footerup">
+					<span><img src="img/fwechat.png" alt=""></span>
+					<span><img src="img/frefresh.png" alt=""></span>
+					<span><img src="img/fsina.png" alt=""></span>
+					<span><img src="img/fzone.png" alt=""></span>
+				</div>
+				<div id="footerdown">
+					<img src="img/flogo.png" alt="">
+					<div>
+						<a href="">公司简介</a>-
+						<a href="">客户服务</a>-
+						<a href="">相关法律</a>-
+						<a href="">网易游戏</a>-
+						<a href="">联系我们</a>-
+						<a href="">商务合作</a>-
+						<a href="">加入我们</a>
+						<span>网易游戏公司版权所有 1991-2012</span>
+						<span>中国网络游戏版权联盟举报中心</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div id="cover">
+		<div id="box">
+			<div><span>《恶魔不要啊》预告视频</span></div>
+			<img src="img/close.png" alt="" id="close">
+			<!-- <img src="img/playplay.png" alt=""> -->
+			<video width="654" height="361">
+			<!-- <source src="/example/html5/mov_bbb.mp4" type="video/mp4" /> -->
+			</video>
+		</div>
+	</div>
+	
 </body>
+<script type="text/javascript">
+	$('.btn').each(function(index) {
+		$(this).css('background-image', 'url(img/btn'+index+'.png)');
+	});
+	$('.btn').eq(0).css('background-image', 'url(img/hoverbtn0.png)');
+	var n=0;
+	var bul=true;
+
+	function judge(){
+		if(n==0){
+			$('#pre').add('#video').css('display', 'block');
+			$('#centre').css('display', 'none');
+		}else{
+			$('#pre').add('#video').css('display', 'none');
+			$('#centre').css('display', 'block').removeClass().addClass('centre'+n+'');
+		}
+		if(n==3){$('#skill').css('display', 'block');
+		}else{
+			$('#skill').css('display', 'none');
+		}
+	}
+
+//大图和图标切换
+	function fnSwitch(){
+		if(n==0){bul=true;}
+		if(n==4){bul=false;}
+		if(bul){n++;}else{n--;}
+		$('#right')
+		.animate({opacity:1},2000)
+		.fadeOut(350,function switchPre(){
+			$(this).css('background-image', 'url(img/'+n+'b.jpg)')
+			judge();
+		})
+		.fadeIn(350,fnSwitch);
+
+		$('.btn').eq(n)
+		.animate({opacity:1},2000)
+		.animate({opacity:0},350,function(){
+			$(this).css('background-image', 'url(img/hoverbtn'+n+'.png)');
+			if(bul){$('.btn').eq(n-1).css('background-image', 'url(img/btn'+(n-1)+'.png)');}
+			else{$('.btn').eq(n+1).css('background-image', 'url(img/btn'+(n+1)+'.png)');}
+		})
+		.animate({opacity:1},350)
+	}
+	fnSwitch();
+
+
+	$('.btn').each(function(index) {
+		$(this).mouseenter(function(event) {
+			n=index;
+			$('.btn')
+			.stop(true,false);
+			$('.btn').each(function(index, el) {
+				$(this).css('background-image', 'url(img/btn'+index+'.png)');
+			});
+			$(this)
+			.css('background-image', 'url(img/hoverbtn'+index+'.png)');
+			$('#right')
+			.stop(true,false)
+			.fadeOut(350,function(){
+				$('#right').css('background-image','url(img/'+index+'b.jpg)')
+				judge();
+			})
+			.fadeIn(350);
+		});
+		$(this).mouseleave(function(){
+			bul=true;
+			fnSwitch();
+		})
+	});
+	$('#right').hover(function() {
+		$('#right').stop(true, false)
+		$('.btn').stop(true, false)
+	}, function() {
+		if(bul){n=n-1;}else{n=n+1;}
+		fnSwitch();
+	});
+
+
+	$('#code div').hover(function() {
+		$(this).css('background', '#36A195').css('transition', '0.35s');
+	}, function() {
+		$(this).css('background', '#262626').css('transition', '0.35s');
+	});
+
+	$('#play').hover(function() {
+		$(this).css({
+			'background-image': 'url(img/hoverplay1.png)',
+			// 'transition': 'background-image 0.35s',
+			'background-position':'center 3px'
+		});
+	}, function() {
+		$(this).css({
+			'background-image': 'url(img/play1.png)',
+			// 'transition': 'background-image 0.35s',
+			'background-position':'center center'
+		});
+	});
+
+//文本切换
+	var t=0;
+	var bul2=true;
+	function textChange(){
+		$('#text').animate({left:-t*343},3000,function(){
+			if(t==0){bul2=true;}
+			if(t==3){bul2=false;}
+			if(bul2){t++;}else{t--;}
+			$(this).animate({left:-t*343},350,textChange)
+		})
+	}
+	textChange();
+
+	$('#back').hover(function() {
+		$(this).css({
+			'background-image': 'url(img/left1.png)',
+			'transition': '0.35s'
+		});
+		$('#text').stop(true, false);
+	}, function() {
+		$(this).css({
+			'background-image': 'url(img/left0.png)',
+			'transition': '0.35s'
+		});
+		textChange();
+	});
+	$('#back').click(function(event) {
+		t--;
+		if(t<=0){t=0;}
+		$('#text').animate({left:-t*343},350)
+	});
+	$('#foward').click(function(event) {
+		t++;
+		if(t>=3){t=3;}
+		$('#text').animate({left:-t*343},350);
+	});
+	$('#foward').hover(function() {
+		$(this).css({
+			'background-image': 'url(img/right1.png)',
+			'transition': '0.35s'
+		});
+		$('#text').stop(true, false);
+	}, function() {
+		$(this).css({
+			'background-image': 'url(img/right0.png)',
+			'transition': '0.35s'
+		});
+		textChange();
+	});
+	$('#pre2').hover(function() {
+		$(this).css({
+			'background-image': 'url(img/prepre1.png)',
+			'transition': '0.35s'
+		});
+	}, function() {
+		$(this).css({
+			'background-image': 'url(img/prepre0.png)',
+			'transition': '0.35s'
+		});
+	});
+	$('#skill div').each(function(index) {
+		$(this).mouseenter(function() {
+			$('#skill img').eq(index).fadeIn(350,function(){
+				$(this).mouseleave(function(){
+					$(this).fadeOut(350);
+				})
+			});
+		});
+	});
+
+	$('#pre').hover(function() {
+		$(this).css({
+			background: 'url(img/pre1.png)',
+			transition: '0.35s'
+		});
+	}, function() {
+		$(this).css({
+			background: 'url(img/pre0.png)',
+			transition: '0.5s'
+		});
+	});
+	$('#video').hover(function() {
+		$(this).css('background', 'url(img/video1.png)').css('transition', '0.35s');
+	}, function() {
+		$(this).css('background', 'url(img/video0.png)').css('transition', '0.35s');
+	});
+	$('#new').hover(function() {
+		$('#newblock').animate({'right':'0px'},350);
+	}, function() {
+		$('#newblock').animate({'right':'-316px'},350);
+	});
+	$('#medio').hover(function() {
+		$('#medioblock').animate({'right':'0px'},500);
+	}, function() {
+		$('#medioblock').animate({'right':'-444px'},500);
+	});
+	$('#medioinner>div').eq(0).mouseenter(function() {
+		$('#medioinner .code').css('display', 'block');
+	});
+	$('#medioinner>div').eq(0).mouseleave(function() {
+		$('#medioinner .code').css('display', 'none');
+	});
+	$('#switch .left').hover(function() {
+		$(this).parent().css('background', 'url(img/switch1.png)').css('transition', '0.35s');
+	}, function() {
+		$(this).parent().css('background', 'url(img/switch0.png)').css('transition', '0.35s');
+	});
+	$('#switch .right').hover(function() {
+		$(this).parent().css('background', 'url(img/switch2.png)').css('transition', '0.35s');
+	}, function() {
+		$(this).parent().css('background', 'url(img/switch0.png)').css('transition', '0.35s');
+	});
+
+//弹框
+	$('.play').each(function(index, el) {
+		$(this).click(function(event) {
+				$('#right').stop(true, false);
+		$('.btn').stop(true, false);
+		
+		$('#cover').css('display', 'block');
+		});
+	});
+	// $('.play').click(function(event) {
+	// 	console.log($('.play'))
+	// 	$('#right').stop(true, false);
+	// 	$('.btn').stop(true, false);
+		
+	// 	$('#cover').css('display', 'block');
+	// 	console.log($('#right')[0].animationPlayState)
+	// });
+	$('#close').click(function(event) {
+		$('#cover').css('display', 'none');
+	});
+</script>
 </html>
